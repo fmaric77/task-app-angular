@@ -1,0 +1,9 @@
+<div class="task-list">
+  @for (task of tasks(); track task.id) {
+    <app-task-item
+      [task]="task"
+      (onToggle)="onToggle.emit($event)"
+      (onDelete)="onDelete.emit($event)"
+    />
+  }
+</div>

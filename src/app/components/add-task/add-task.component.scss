@@ -1,0 +1,41 @@
+.add-task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #e5e5ea;
+
+  &__input {
+    flex: 1;
+    height: 44px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f2f2f7;
+    font-size: 16px;
+    color: #1c1c1e;
+    outline: none;
+
+    &::placeholder {
+      color: #c7c7cc;
+    }
+  }
+
+  &__button {
+    height: 44px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: #007aff;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+
+    &--disabled,
+    &:disabled {
+      background-color: #c7c7cc;
+      cursor: not-allowed;
+    }
+  }
+}

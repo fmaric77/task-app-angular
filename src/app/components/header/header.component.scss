@@ -1,0 +1,18 @@
+.header {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid #e5e5ea;
+
+  &__title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1c1c1e;
+    letter-spacing: -0.5px;
+  }
+
+  &__subtitle {
+    margin: 2px 0 0;
+    font-size: 14px;
+    color: #8e8e93;
+  }
+}

@@ -1,0 +1,26 @@
+<div class="app">
+  <main class="app__container">
+    <app-header [activeCount]="activeCount()" />
+
+    <app-add-task (onAdd)="addTask($event)" />
+
+    <app-filter-bar
+      [activeFilter]="filter()"
+      [completedCount]="completedCount()"
+      (onFilterChange)="setFilter($event)"
+      (onClearCompleted)="clearCompleted()"
+    />
+
+    @if (isLoading()) {
+      <div class="app__loading">
+        <div class="app__spinner" aria-label="Loading"></div>
+      </div>
+    } @else {
+      <app-task-list
+        [tasks]="tasks()"
+        (onToggle)="toggleTask($event)"
+        (onDelete)="deleteTask($event)"
+      />
+    }
+  </main>
+</div>
