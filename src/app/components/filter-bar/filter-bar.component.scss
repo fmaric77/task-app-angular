@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  border-bottom: 1px solid #e5e5ea;
+  border-bottom: 1px solid var(--color-border);
 
   &__tabs {
     display: flex;
@@ -17,11 +17,11 @@
     background: transparent;
     font-size: 14px;
     font-weight: 500;
-    color: #8e8e93;
+    color: var(--color-gray);
     cursor: pointer;
 
     &--active {
-      background-color: #007aff;
+      background-color: var(--color-primary);
       color: #ffffff;
     }
   }
@@ -39,11 +39,11 @@
     background: transparent;
     font-size: 13px;
     font-weight: 500;
-    color: #8e8e93;
+    color: var(--color-gray);
     cursor: pointer;
 
     &--active {
-      background-color: #007aff;
+      background-color: var(--color-primary);
       color: #ffffff;
     }
   }
@@ -53,7 +53,7 @@
     border: none;
     background: transparent;
     font-size: 13px;
-    color: #ff3b30;
+    color: var(--color-danger);
     cursor: pointer;
   }
 }

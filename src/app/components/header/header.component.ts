@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +8,6 @@ import { Component, input } from '@angular/core';
 })
 export class HeaderComponent {
   activeCount = input.required<number>();
+  isDarkMode = input.required<boolean>();
+  onToggleTheme = output<void>();
 }

@@ -1,18 +1,38 @@
 .header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   padding: 16px 20px 12px;
-  border-bottom: 1px solid #e5e5ea;
+  border-bottom: 1px solid var(--color-border);
+
+  &__content {
+    flex: 1;
+  }
 
   &__title {
     margin: 0;
     font-size: 28px;
     font-weight: 700;
-    color: #1c1c1e;
+    color: var(--color-text);
     letter-spacing: -0.5px;
   }
 
   &__subtitle {
     margin: 2px 0 0;
     font-size: 14px;
-    color: #8e8e93;
+    color: var(--color-gray);
+  }
+
+  &__theme-toggle {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    margin-top: 4px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--color-input-bg);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
   }
 }

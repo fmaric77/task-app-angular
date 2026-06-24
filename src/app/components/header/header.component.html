@@ -1,7 +1,18 @@
 <div class="header">
-  <h1 class="header__title">My Tasks</h1>
-  <p class="header__subtitle">
-    {{ activeCount() }}
-    {{ activeCount() === 1 ? 'task remaining' : 'tasks remaining' }}
-  </p>
+  <div class="header__content">
+    <h1 class="header__title">My Tasks</h1>
+    <p class="header__subtitle">
+      {{ activeCount() }}
+      {{ activeCount() === 1 ? 'task remaining' : 'tasks remaining' }}
+    </p>
+  </div>
+
+  <button
+    type="button"
+    class="header__theme-toggle"
+    (click)="onToggleTheme.emit()"
+    [attr.aria-label]="isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode'"
+  >
+    {{ isDarkMode() ? '☀️' : '🌙' }}
+  </button>
 </div>

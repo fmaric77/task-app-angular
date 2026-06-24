@@ -4,6 +4,7 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
 import { HeaderComponent } from './components/header/header.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskService } from './services/task.service';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +20,10 @@ import { TaskService } from './services/task.service';
 })
 export class AppComponent {
   private readonly taskService = inject(TaskService);
+  private readonly themeService = inject(ThemeService);
 
   readonly isLoading = this.taskService.isLoading;
+  readonly isDarkMode = this.themeService.isDarkMode;
   readonly activeCount = this.taskService.activeCount;
   readonly completedCount = this.taskService.completedCount;
   readonly filter = this.taskService.filter;
@@ -53,5 +56,9 @@ export class AppComponent {
 
   cyclePriority(id: string): void {
     this.taskService.cyclePriority(id);
+  }
+
+  toggleDarkMode(): void {
+    this.themeService.toggleDarkMode();
   }
 }
