@@ -24,6 +24,7 @@ export class AppComponent {
   readonly activeCount = this.taskService.activeCount;
   readonly completedCount = this.taskService.completedCount;
   readonly filter = this.taskService.filter;
+  readonly sortByPriority = this.taskService.sortByPriority;
   readonly tasks = this.taskService.filteredTasks;
 
   addTask(title: string): void {
@@ -44,5 +45,13 @@ export class AppComponent {
 
   clearCompleted(): void {
     this.taskService.clearCompleted();
+  }
+
+  toggleSortByPriority(): void {
+    this.taskService.toggleSortByPriority();
+  }
+
+  cyclePriority(id: string): void {
+    this.taskService.cyclePriority(id);
   }
 }

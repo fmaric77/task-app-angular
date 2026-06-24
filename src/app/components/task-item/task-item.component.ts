@@ -12,8 +12,13 @@ export class TaskItemComponent {
   task = input.required<Task>();
   onToggle = output<string>();
   onDelete = output<string>();
+  onCyclePriority = output<string>();
 
   formatDate = formatDate;
+
+  handleCyclePriority(): void {
+    this.onCyclePriority.emit(this.task().id);
+  }
 
   handleDelete(): void {
     this.onDelete.emit(this.task().id);

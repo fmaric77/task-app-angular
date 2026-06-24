@@ -5,6 +5,7 @@ export interface Task {
   title: string;
   completed: boolean;
   createdAt: number;
+  priority: TaskPriority;
 }
 
 export type TaskPriority = 'high' | 'medium' | 'low';
@@ -16,7 +17,6 @@ export interface TaskCategory {
 }
 
 export interface TaskWithMeta extends Task {
-  priority?: TaskPriority;
   category?: string;
   notes?: string;
   dueDate?: number;

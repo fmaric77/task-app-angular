@@ -18,10 +18,16 @@ export class FilterBarComponent {
 
   activeFilter = input.required<FilterType>();
   completedCount = input.required<number>();
+  sortByPriority = input.required<boolean>();
   onFilterChange = output<FilterType>();
   onClearCompleted = output<void>();
+  onToggleSort = output<void>();
 
   handleClear(): void {
     this.onClearCompleted.emit();
+  }
+
+  handleToggleSort(): void {
+    this.onToggleSort.emit();
   }
 }

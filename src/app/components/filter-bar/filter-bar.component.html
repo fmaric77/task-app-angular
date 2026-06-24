@@ -10,6 +10,14 @@
         {{ f.label }}
       </button>
     }
+    <button
+      type="button"
+      class="filter-bar__tab"
+      [class.filter-bar__tab--active]="sortByPriority()"
+      (click)="handleToggleSort()"
+    >
+      Sort by priority
+    </button>
   </div>
 
   @if (completedCount() > 0) {
