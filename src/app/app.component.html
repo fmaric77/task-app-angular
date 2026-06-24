@@ -7,8 +7,10 @@
     <app-filter-bar
       [activeFilter]="filter()"
       [completedCount]="completedCount()"
+      [sortByPriority]="sortByPriority()"
       (onFilterChange)="setFilter($event)"
       (onClearCompleted)="clearCompleted()"
+      (onToggleSort)="toggleSortByPriority()"
     />
 
     @if (isLoading()) {
@@ -20,6 +22,7 @@
         [tasks]="tasks()"
         (onToggle)="toggleTask($event)"
         (onDelete)="deleteTask($event)"
+        (onCyclePriority)="cyclePriority($event)"
       />
     }
   </main>

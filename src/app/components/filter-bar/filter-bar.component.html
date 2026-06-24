@@ -12,9 +12,20 @@
     }
   </div>
 
-  @if (completedCount() > 0) {
-    <button type="button" class="filter-bar__clear" (click)="handleClear()">
-      Clear completed
+  <div class="filter-bar__actions">
+    <button
+      type="button"
+      class="filter-bar__sort"
+      [class.filter-bar__sort--active]="sortByPriority()"
+      (click)="handleToggleSort()"
+    >
+      Sort by priority
     </button>
-  }
+
+    @if (completedCount() > 0) {
+      <button type="button" class="filter-bar__clear" (click)="handleClear()">
+        Clear completed
+      </button>
+    }
+  </div>
 </div>

@@ -1,12 +1,22 @@
 import { computed, effect, Injectable, signal } from '@angular/core';
-import { FilterType, Task } from '../models/task.model';
+import { FilterType, Task, TaskPriority } from '../models/task.model';
 
 const STORAGE_KEY = '@taskapp_tasks';
+
+const PRIORITY_ORDER: Record<TaskPriority, number> = {
+  high: 0,
+  medium: 1,
+  low: 2,
+};
 
 function loadFromStorage(): Task[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
+    const tasks: Task[] = raw ? JSON.parse(raw) : [];
+    return tasks.map(t => ({
+      ...t,
+      priority: t.priority ?? 'medium',
+    }));
   } catch {
     return [];
   }
@@ -24,13 +34,14 @@ function saveToStorage(tasks: Task[]): void {
 export class TaskService {
   readonly tasks = signal<Task[]>([]);
   readonly filter = signal<FilterType>('all');
+  readonly sortByPriority = signal(false);
   readonly isLoading = signal(true);
 
   readonly filteredTasks = computed(() => {
     const currentFilter = this.filter();
     const allTasks = this.tasks();
 
-    return allTasks.filter(t => {
+    const filtered = allTasks.filter(t => {
       if (currentFilter === 'active') {
         return !t.completed;
       }
@@ -39,6 +50,14 @@ export class TaskService {
       }
       return true;
     });
+
+    if (!this.sortByPriority()) {
+      return filtered;
+    }
+
+    return [...filtered].sort(
+      (a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority],
+    );
   });
 
   readonly activeCount = computed(() =>
@@ -62,6 +81,24 @@ export class TaskService {
     this.filter.set(filter);
   }
 
+  toggleSortByPriority(): void {
+    this.sortByPriority.update(v => !v);
+  }
+
+  cyclePriority(id: string): void {
+    const next: Record<TaskPriority, TaskPriority> = {
+      medium: 'high',
+      high: 'low',
+      low: 'medium',
+    };
+
+    this.tasks.update(tasks =>
+      tasks.map(t =>
+        t.id === id ? { ...t, priority: next[t.priority] } : t,
+      ),
+    );
+  }
+
   addTask(title: string): void {
     const trimmed = title.trim();
     if (!trimmed) {
@@ -73,6 +110,7 @@ export class TaskService {
       title: trimmed,
       completed: false,
       createdAt: Date.now(),
+      priority: 'medium',
     };
 
     this.tasks.update(tasks => [newTask, ...tasks]);

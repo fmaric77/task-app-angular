@@ -5,6 +5,28 @@
   border-bottom: 1px solid #e5e5ea;
   background-color: #ffffff;
 
+  &__priority {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    margin-right: 12px;
+    padding: 0;
+    cursor: pointer;
+
+    &--high {
+      background-color: #ff3b30;
+    }
+
+    &--medium {
+      background-color: #ff9500;
+    }
+
+    &--low {
+      background-color: #34c759;
+    }
+  }
+
   &__checkbox,
   &__body,
   &__delete {

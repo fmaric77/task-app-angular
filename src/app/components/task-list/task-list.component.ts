@@ -13,4 +13,5 @@ export class TaskListComponent {
   tasks = input.required<Task[]>();
   onToggle = output<string>();
   onDelete = output<string>();
+  onCyclePriority = output<string>();
 }
