@@ -88,6 +88,7 @@ export class TaskService {
     this.tasks.update(tasks => tasks.filter(t => t.id !== id));
   }
 
-  // TODO: Implement clearCompleted - remove all tasks where completed === true
-  clearCompleted(): void {}
+  clearCompleted(): void {
+    this.tasks.update(tasks => tasks.filter(t => !t.completed));
+  }
 }
