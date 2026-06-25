@@ -85,7 +85,7 @@ export class TaskService {
   }
 
   deleteTask(id: string): void {
-    // TODO: Implement deleteTask - remove task by id
+    this.tasks.update(tasks => tasks.filter(t => t.id !== id));
   }
 
   clearCompleted(): void {
