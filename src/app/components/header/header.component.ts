@@ -8,4 +8,5 @@ import { Component, input } from '@angular/core';
 })
 export class HeaderComponent {
   activeCount = input.required<number>();
+  totalCount = input.required<number>();
 }

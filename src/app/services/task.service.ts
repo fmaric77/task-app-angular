@@ -45,6 +45,8 @@ export class TaskService {
     this.tasks().filter(t => !t.completed).length,
   );
 
+  readonly totalCount = computed(() => this.tasks().length);
+
   readonly completedCount = computed(() =>
     this.tasks().filter(t => t.completed).length,
   );

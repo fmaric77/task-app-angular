@@ -1,6 +1,6 @@
 <div class="app">
   <main class="app__container">
-    <app-header [activeCount]="activeCount()" />
+    <app-header [activeCount]="activeCount()" [totalCount]="totalCount()" />
 
     <app-add-task (onAdd)="addTask($event)" />
 

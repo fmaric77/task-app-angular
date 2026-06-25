@@ -22,6 +22,7 @@ export class AppComponent {
 
   readonly isLoading = this.taskService.isLoading;
   readonly activeCount = this.taskService.activeCount;
+  readonly totalCount = this.taskService.totalCount;
   readonly completedCount = this.taskService.completedCount;
   readonly filter = this.taskService.filter;
   readonly tasks = this.taskService.filteredTasks;
