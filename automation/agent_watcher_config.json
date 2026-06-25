@@ -1,0 +1,22 @@
+{
+  "jira_url": "https://iolap-inc.atlassian.net",
+  "jira_username": "filip.maric@elixirr.com",
+  "jira_project": "TEST",
+  "jira_label": "support-agent",
+  "status_todo": "Backlog",
+  "status_in_progress": "In Progress",
+  "status_done": "Done",
+  "poll_interval_seconds": 15,
+  "github_repo": "fmaric77/task-app-angular",
+  "workspace": "/home/fillip/projec/AUTOmationagent",
+  "runbooks_dir": "runbooks",
+  "default_runbook": "runbooks/clear-completed-noop.md",
+  "cursor_agent_bin": "cursor-agent",
+  "state_file": "automation/agent_watcher_state.json",
+  "scan_interval_seconds": 3600,
+  "triage_label": "support-agent-triage",
+  "scanner_state_file": "automation/scanner_state.json",
+  "scan_paths": ["src"],
+  "min_severity": "medium",
+  "max_tickets_per_scan": 5
+}

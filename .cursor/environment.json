@@ -1,0 +1,3 @@
+{
+  "install": "npm install && pip install uv && uv tool install mcp-atlassian 2>/dev/null || true"
+}

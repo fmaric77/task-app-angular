@@ -1,0 +1,32 @@
+---
+description: TypeScript and import conventions for Angular project
+globs: "src/**/*.{ts,html,scss}"
+alwaysApply: false
+---
+
+# TypeScript Conventions
+
+- Use `const` for all variable declarations (never `var`; `let` only when reassignment is needed)
+- Use `camelCase` for variables, functions, and service methods
+- Use `PascalCase` for components, interfaces, classes, and type aliases
+- Prefer explicit return types on exported functions and public service methods
+- Use `readonly` for injected dependencies and signal/computed references
+
+# Import Order
+
+Group imports in this order, separated by blank lines:
+
+1. `@angular/*` packages
+2. Third-party libraries (rxjs, etc.)
+3. Local components, services, and models
+4. Utils and constants
+
+Remove unused imports immediately.
+
+# File Structure
+
+- One component per file
+- Component file structure: imports → `@Component` decorator → class
+- Services in `src/app/services/`
+- Shared types in `src/app/models/`
+- Utility functions in `src/app/utils/`

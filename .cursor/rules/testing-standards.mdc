@@ -1,0 +1,25 @@
+---
+description: Testing standards for Angular component tests
+globs: src/**/*.spec.ts
+alwaysApply: false
+---
+
+# Testing Standards
+
+- Use Jasmine + Angular TestBed for component tests
+- Test file naming: `component-name.component.spec.ts` (co-located with component)
+- Each test must be independent — no shared mutable state between tests
+- Query by role, text, or `data-testid` attributes (never by DOM structure)
+- Use `fixture.detectChanges()` and `fakeAsync`/`tick` instead of hardcoded timeouts
+- Assert specific content, not just existence
+
+```typescript
+// ❌ BAD
+expect(compiled.querySelector('.task')).toBeTruthy();
+setTimeout(() => { ... }, 1000);
+
+// ✅ GOOD
+expect(fixture.nativeElement.textContent).toContain('Buy groceries');
+fixture.detectChanges();
+expect(component.tasks().length).toBe(1);
+```

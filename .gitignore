@@ -40,3 +40,13 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Automation runtime artifacts
+__pycache__/
+*.pyc
+automation/agent_watcher_state.json
+automation/scanner_state.json
+
+# Secrets and local deploy config
+.env
+.vercel/

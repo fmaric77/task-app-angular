@@ -1,0 +1,47 @@
+---
+description: Angular component standards and styling conventions
+globs: src/app/**/*.component.ts
+alwaysApply: false
+---
+
+# Angular Component Standards
+
+- Use standalone components with explicit `imports` array
+- Use `inject()` for dependency injection (not constructor injection)
+- Use `input()` / `output()` signal-based APIs for component I/O
+- One component per file, named `ComponentNameComponent`
+- Selector prefix: `app-`
+
+```typescript
+// ❌ BAD
+@Component({ selector: 'add-task' })
+export class AddTask {
+  @Input() title: string;
+  @Output() added = new EventEmitter<string>();
+}
+
+// ✅ GOOD
+@Component({
+  selector: 'app-add-task',
+  standalone: true,
+  imports: [FormsModule],
+  templateUrl: './add-task.component.html',
+  styleUrl: './add-task.component.scss',
+})
+export class AddTaskComponent {
+  onAdd = output<string>();
+}
+```
+
+# Styling
+
+- Use component-scoped SCSS files (`styleUrl: './component.component.scss'`)
+- Never use inline styles in templates
+- Shared tokens live in `src/app/constants.ts` or `src/styles.scss`
+
+# File Structure
+
+- Components in `src/app/components/<name>/`
+- Services in `src/app/services/`
+- Models in `src/app/models/`
+- Utils in `src/app/utils/`

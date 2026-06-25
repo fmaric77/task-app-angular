@@ -1,0 +1,99 @@
+---
+description: Git workflow conventions for branch naming, commit messages, and PR descriptions. Apply when creating branches, committing code, or preparing PRs.
+globs:
+alwaysApply: false
+---
+
+# Git Conventions
+
+## Branch Naming
+
+Format: `{type}/{ticket-key}-{short-description}`
+
+- `feature/SCRUM-10-clear-completed`
+- `fix/SCRUM-8-date-off-by-one`
+- `chore/SCRUM-9-code-cleanup`
+- `test/SCRUM-6-priority-test-cases`
+
+Types: `feature`, `fix`, `chore`, `test`, `refactor`, `docs`
+
+If there's no Jira ticket, omit the key: `chore/remove-dead-code`
+
+## Commit Messages
+
+Format:
+```
+{type}(scope): short description
+
+[optional body — what and why, not how]
+
+[Ticket: SCRUM-XX]
+```
+
+Examples:
+```
+feat(tasks): implement clear completed functionality
+
+Adds the missing clearCompleted handler that removes all
+completed tasks and persists the updated list.
+
+Ticket: SCRUM-10
+```
+
+```
+fix(utils): correct off-by-one month in formatDate
+
+getMonth() returns 0-indexed value. Added +1 for display.
+
+Ticket: SCRUM-8
+```
+
+```
+refactor(components): standardize to named exports
+
+Converts TaskItem, Header, and FilterBar to named function
+exports with interface props per team conventions.
+
+Ticket: SCRUM-9
+```
+
+Types: `feat`, `fix`, `refactor`, `test`, `chore`, `docs`, `style`
+
+Scope: the area of the codebase (e.g., `tasks`, `components`, `utils`, `hooks`)
+
+Keep the first line under 72 characters.
+
+## PR Descriptions
+
+When asked to prepare a PR description, use this structure:
+
+```
+## Summary
+1-2 sentences: what changed and why.
+
+## Changes
+- Bullet points for each meaningful change
+- Reference ticket keys where relevant
+
+## Testing
+- How the changes were verified
+- Any manual testing steps needed
+
+Ticket: SCRUM-XX
+```
+
+## Never Commit to Main
+
+Before committing, always check the current branch (`git branch --show-current`).
+If the current branch is `main` (or `master`):
+
+1. **Do not commit.** Create a feature branch first using the branch naming format above.
+2. Stage your changes, switch to the new branch, then commit there.
+3. Never push directly to `main`/`master`.
+
+This applies even for small or single-file changes. All work must go through a feature branch and PR.
+
+## Important
+
+- When referencing a Jira ticket, always include the key in the branch name and commit message
+- One logical change per commit — don't bundle unrelated changes
