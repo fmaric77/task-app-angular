@@ -4,8 +4,7 @@
 export function formatDate(timestamp: number): string {
   const date = new Date(timestamp);
 
-  // Bug: getMonth() returns a 0-indexed value (0 = January, 11 = December)
-  const month = date.getMonth();
+  const month = date.getMonth() + 1;
   const day = date.getDate();
   const year = date.getFullYear();
 

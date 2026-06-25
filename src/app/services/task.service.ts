@@ -45,8 +45,6 @@ export class TaskService {
     this.tasks().filter(t => !t.completed).length,
   );
 
-  readonly totalCount = computed(() => this.tasks().length);
-
   readonly completedCount = computed(() =>
     this.tasks().filter(t => t.completed).length,
   );
@@ -87,9 +85,10 @@ export class TaskService {
   }
 
   deleteTask(id: string): void {
-    this.tasks.update(tasks => tasks.filter(t => t.id !== id));
+    // TODO: Implement deleteTask - remove task by id
   }
 
-  // TODO: Implement clearCompleted - remove all tasks where completed === true
-  clearCompleted(): void {}
+  clearCompleted(): void {
+    this.tasks.update(tasks => tasks.filter(t => !t.completed));
+  }
 }
